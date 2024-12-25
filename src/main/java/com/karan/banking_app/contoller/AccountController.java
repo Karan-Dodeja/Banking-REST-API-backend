@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -46,6 +47,12 @@ public class AccountController {
         double amount = request.get("amount");
         AccountDto accountDto = accountServicel.withdraw(id, amount);
         return  ResponseEntity.ok(accountDto);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<AccountDto>> getAllAccounts(){
+        List<AccountDto> accounts = accountServicel.getAllAcounts();
+        return ResponseEntity.ok(accounts);
     }
 
 }
